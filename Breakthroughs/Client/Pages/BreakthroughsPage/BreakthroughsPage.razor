@@ -1,0 +1,71 @@
+﻿@page "/"
+@page "/ninjas"
+@inherits BreakthroughsPageBase
+
+<div class="head-container">
+    <div class="head-wrapper">
+        <img src="../img/newlogo.svg" alt="" />
+        <input class="search-input" placeholder="Search..." @bind-value="@SearchTerm" />
+    </div>
+</div>
+<div class="body-container">
+    <div class="body-wrapper">
+        <div class="list-container noselect">
+            @if (FilteredList != null && FilteredList.Count > 0)
+            {
+                @foreach (var item in FilteredList)
+                {
+                    if (item.IsSelected == false)
+                    {
+                        <div @onclick="() => SelectNinja(item.Name)"
+                             class="list" style="background: url('img/@item.ImagePath') top left no-repeat;">
+                            <div class="stars list-item">
+                                @for (int i = 0; i < item.Stars; i++)
+                                {
+                                    <div class="star"></div>
+                                }
+                            </div>
+                            <div class="attribute list-item" style="background-image: url('img/@(item.Attribute.ToString()).svg');"></div>
+                        </div>
+                    }
+                    else
+                    {
+                        <div @onclick="() => SelectNinja(item.Name)"
+                             class="list list-selected" style="background: url('img/@item.ImagePath') top left no-repeat;">
+                            <div class="stars list-item">
+                                @for (int i = 0; i < item.Stars; i++)
+                                {
+                                    <div class="star"></div>
+                                }
+                            </div>
+                            <div class="attribute list-item" style="background-image: url('img/@(item.Attribute.ToString()).svg');"></div>
+                        </div>
+                    }
+                }
+            }
+        </div>
+
+        <div class="info-container">
+            @if (NinjaModel != null)
+            {
+                <div class="info-title">
+                    @NinjaModel.Name
+                </div>
+                <div class="info-body">
+                    @if (NinjaModel.SkillsBT == null)
+                    {
+                        <div>This character doesn't have Breakthroughs yet</div>
+                        <hr />
+                    }
+                    else
+                    {
+                        @NinjaModel.SkillsBT
+                        <hr />
+                    }
+                    Regular Skills: <br />
+                    @NinjaModel.Skills
+                </div>
+            }
+        </div>
+    </div>
+</div>
