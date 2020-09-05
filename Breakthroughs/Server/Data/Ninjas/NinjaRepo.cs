@@ -16,7 +16,7 @@ namespace Breakthroughs.Server.Data.Ninjas
             dbContext = _dbContext;
         }
 
-        public async Task<NinjaModel> GetNinjaById(int id)
+        public async Task<NinjaModel> GetNinjaById(string id)
         {
             return await dbContext.Ninjas.FirstOrDefaultAsync(i => i.Id == id);
         }

@@ -8,7 +8,7 @@ namespace Breakthroughs.Server.Data.Ninjas
 {
     public interface INinjaRepo
     {
-        Task<NinjaModel> GetNinjaById(int id);
+        Task<NinjaModel> GetNinjaById(string id);
         Task<IEnumerable<NinjaModel>> GetNinjaList();
     }
 }

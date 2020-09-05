@@ -24,9 +24,9 @@ namespace Breakthroughs.Server.Controllers
             this.mapper = mapper;
         }
 
-        // GET: api/ninja/{id}
-        [HttpGet("{id:int}")]
-        public async Task<ActionResult<NinjaReadDto>> GetNinjaById(int id)
+        // GET: api/ninja/id/{id}
+        [HttpGet("id/{id}")]
+        public async Task<ActionResult<NinjaReadDto>> GetNinjaById(string id)
         {
             try
             {

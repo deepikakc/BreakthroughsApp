@@ -17,10 +17,10 @@ namespace Breakthroughs.Client.Services
             this.httpClient = httpClient;
         }
 
-        public async Task<NinjaReadDto> GetNinjaById(int id)
+        public async Task<NinjaReadDto> GetNinjaById(string id)
         {
             return await httpClient
-                .GetFromJsonAsync<NinjaReadDto>($"api/ninja/{id}");
+                .GetFromJsonAsync<NinjaReadDto>($"api/ninja/id/{id}");
         }
 
         public async Task<List<NinjaReadDto>> GetNinjaList()

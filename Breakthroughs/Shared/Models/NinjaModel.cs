@@ -8,7 +8,7 @@ namespace Breakthroughs.Shared.Models
 {
     public class NinjaModel
     {
-        [Key] public int Id { get; set; }
+        [Key] public string Id { get; set; }
         [MaxLength(100)] public string Name { get; set; }
         [MaxLength(2000)] public string Skills { get; set; }
         [MaxLength(2000)] public string SkillsBT { get; set; }

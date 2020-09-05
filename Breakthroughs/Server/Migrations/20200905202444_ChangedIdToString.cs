@@ -2,7 +2,7 @@
 
 namespace Breakthroughs.Server.Migrations
 {
-    public partial class InitialNinja : Migration
+    public partial class ChangedIdToString : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -10,8 +10,7 @@ namespace Breakthroughs.Server.Migrations
                 name: "Ninjas",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Id = table.Column<string>(nullable: false),
                     Name = table.Column<string>(maxLength: 100, nullable: true),
                     Skills = table.Column<string>(maxLength: 2000, nullable: true),
                     SkillsBT = table.Column<string>(maxLength: 2000, nullable: true),

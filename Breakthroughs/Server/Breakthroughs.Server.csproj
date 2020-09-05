@@ -5,6 +5,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Migrations\20200905194131_ChangeIdToString.cs" />
+    <Compile Remove="Migrations\20200905194131_ChangeIdToString.Designer.cs" />
+    <Compile Remove="Migrations\20200905201839_ChangedIdToString.cs" />
+    <Compile Remove="Migrations\20200905201839_ChangedIdToString.Designer.cs" />
+    <Compile Remove="Migrations\20200905202312_ChangedIdToString.cs" />
+    <Compile Remove="Migrations\20200905202312_ChangedIdToString.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="AutoMapper" Version="10.0.0" />
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="8.0.1" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="3.2.1" />
@@ -13,6 +22,7 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.4" />
   </ItemGroup>
 
   <ItemGroup>

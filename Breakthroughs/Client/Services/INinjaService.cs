@@ -8,7 +8,7 @@ namespace Breakthroughs.Client.Services
 {
     public interface INinjaService
     {
-        Task<NinjaReadDto> GetNinjaById(int id);
+        Task<NinjaReadDto> GetNinjaById(string id);
         Task<List<NinjaReadDto>> GetNinjaList();
     }
 }

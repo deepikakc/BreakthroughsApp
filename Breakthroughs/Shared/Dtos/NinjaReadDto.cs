@@ -7,6 +7,7 @@ namespace Breakthroughs.Shared.Dtos
 {
     public class NinjaReadDto
     {
+        public string Id { get; set; }
         public string Name { get; set; }
         public string Skills { get; set; }
         public string SkillsBT { get; set; }

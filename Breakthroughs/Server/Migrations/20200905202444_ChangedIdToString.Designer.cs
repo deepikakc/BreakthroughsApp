@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Breakthroughs.Server.Migrations
 {
     [DbContext(typeof(NinjaDbContext))]
-    [Migration("20200903014821_InitialNinja")]
-    partial class InitialNinja
+    [Migration("20200905202444_ChangedIdToString")]
+    partial class ChangedIdToString
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -22,10 +22,8 @@ namespace Breakthroughs.Server.Migrations
 
             modelBuilder.Entity("Breakthroughs.Shared.Models.NinjaModel", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<int>("Attribute")
                         .HasColumnType("int");
