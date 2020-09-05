@@ -10,37 +10,21 @@
 </div>
 <div class="body-container">
     <div class="body-wrapper">
-        <div class="list-container noselect">
+        <div class="list-container noselect" id="listId">
             @if (FilteredList != null && FilteredList.Count > 0)
             {
                 @foreach (var item in FilteredList)
                 {
-                    if (item.IsSelected == false)
-                    {
-                        <div @onclick="() => SelectNinja(item.Name)"
-                             class="list" style="background: url('img/@item.ImagePath') top left no-repeat;">
-                            <div class="stars list-item">
-                                @for (int i = 0; i < item.Stars; i++)
-                                {
-                                    <div class="star"></div>
-                                }
-                            </div>
-                            <div class="attribute list-item" style="background-image: url('img/@(item.Attribute.ToString()).svg');"></div>
+                    <div @onclick="() => SelectNinja(item.Name)" id="@item.Name"
+                         class="list" style="background: url('img/@item.ImagePath') top left no-repeat;">
+                        <div class="stars list-item">
+                            @for (int i = 0; i < item.Stars; i++)
+                            {
+                                <div class="star"></div>
+                            }
                         </div>
-                    }
-                    else
-                    {
-                        <div @onclick="() => SelectNinja(item.Name)"
-                             class="list list-selected" style="background: url('img/@item.ImagePath') top left no-repeat;">
-                            <div class="stars list-item">
-                                @for (int i = 0; i < item.Stars; i++)
-                                {
-                                    <div class="star"></div>
-                                }
-                            </div>
-                            <div class="attribute list-item" style="background-image: url('img/@(item.Attribute.ToString()).svg');"></div>
-                        </div>
-                    }
+                        <div class="attribute list-item" style="background-image: url('img/@(item.Attribute.ToString()).svg');"></div>
+                    </div>
                 }
             }
         </div>

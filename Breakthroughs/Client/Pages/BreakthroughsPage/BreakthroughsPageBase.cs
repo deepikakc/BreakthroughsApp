@@ -1,6 +1,7 @@
 ﻿using Breakthroughs.Client.Services;
 using Breakthroughs.Shared.Dtos;
 using Microsoft.AspNetCore.Components;
+using Microsoft.JSInterop;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,7 +12,9 @@ namespace Breakthroughs.Client.Pages.BreakthroughsPage
     public class BreakthroughsPageBase : ComponentBase
     {
         [Inject]
-        public INinjaService NinjaService { get; set; }
+        private IJSRuntime JS { get; set; }
+        [Inject]
+        private INinjaService NinjaService { get; set; }
 
         public List<NinjaReadDto> NinjaList { get; set; }
         public List<NinjaReadDto> FilteredList { get; set; }
@@ -41,17 +44,19 @@ namespace Breakthroughs.Client.Pages.BreakthroughsPage
         {
             if (name != "firstSelection")
             {
-                var selected = FilteredList.FirstOrDefault(i => i.IsSelected == true);
+                var previous = FilteredList.FirstOrDefault(i => i.IsSelected == true);
 
-                if (selected != null)
+                if (previous != null)
                 {
-                    selected.IsSelected = false;
+                    previous.IsSelected = false;
                 }
 
-                var model = FilteredList.FirstOrDefault(i => i.Name == name);
-                model.IsSelected = true;
+                var selected = FilteredList.FirstOrDefault(i => i.Name == name);
+                selected.IsSelected = true;
 
-                NinjaModel = model;
+                JS.InvokeVoidAsync("nSelected", selected.Name, previous.Name);
+
+                NinjaModel = selected;
             }
             else
             {
