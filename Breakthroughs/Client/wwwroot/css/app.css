@@ -1,11 +1,46 @@
 ﻿@import url('https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
 
-.info-container::-webkit-scrollbar {
-    width: 0;
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
 }
-.list-container::-webkit-scrollbar {
-    width: 0;
+
+::-webkit-scrollbar-button {
+    width: 0px;
+    height: 0px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #001E36;
+    border: 0px none #ffffff;
+    border-radius: 0;
+}
+
+    ::-webkit-scrollbar-thumb:hover {
+        background: #001E36;
+    }
+
+    ::-webkit-scrollbar-thumb:active {
+        background: #001E36;
+    }
+
+::-webkit-scrollbar-track {
+    background: #eeeeee;
+    border: 0px none #ffffff;
+    border-radius: 0;
+}
+
+    ::-webkit-scrollbar-track:hover {
+        background: #eeeeee;
+    }
+
+    ::-webkit-scrollbar-track:active {
+        background: #eeeeee;
+    }
+
+::-webkit-scrollbar-corner {
+    background: #eeeeee;
 }
 
 .noselect {
@@ -145,6 +180,10 @@ input {
     background-color: #eeeeee!important;
 }
 
+.star-white {
+    background: url('../img/star-w.svg') center right no-repeat;
+}
+
 /*-----------------------------------------------*/
 
 @media (min-width: 768px) {
@@ -180,5 +219,13 @@ input {
     .list-item {
         flex-direction: row;
         justify-content: flex-end;
+    }
+
+    .info-container::-webkit-scrollbar {
+        width: 0;
+    }
+
+    .list-container::-webkit-scrollbar {
+        width: 0;
     }
 }
