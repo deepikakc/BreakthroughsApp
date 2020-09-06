@@ -17,7 +17,7 @@ using Microsoft.Extensions.Logging;
 
 namespace Breakthroughs.Server.Areas.Identity.Pages.Account
 {
-    [AllowAnonymous]
+    [Authorize]
     public class RegisterModel : PageModel
     {
         private readonly SignInManager<ApplicationUser> _signInManager;
@@ -98,7 +98,7 @@ namespace Breakthroughs.Server.Areas.Identity.Pages.Account
                     }
                     else
                     {
-                        await _signInManager.SignInAsync(user, isPersistent: false);
+                        //await _signInManager.SignInAsync(user, isPersistent: false);
                         return LocalRedirect(returnUrl);
                     }
                 }

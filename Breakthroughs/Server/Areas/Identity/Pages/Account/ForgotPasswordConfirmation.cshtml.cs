@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace Breakthroughs.Server.Areas.Identity.Pages.Account
 {
-    [AllowAnonymous]
+    [Authorize]
     public class ForgotPasswordConfirmation : PageModel
     {
         public void OnGet()

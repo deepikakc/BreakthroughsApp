@@ -33,12 +33,13 @@ namespace Breakthroughs.Server
             services.AddScoped<INinjaRepo, NinjaRepo>();
 
             services.AddDefaultIdentity<ApplicationUser>(options => {
-                options.SignIn.RequireConfirmedAccount = true;
-                options.Password.RequireDigit = false;
-                options.Password.RequireUppercase = false;
-                options.Password.RequireLowercase = false;
-                options.Password.RequireNonAlphanumeric = false;
+                options.SignIn.RequireConfirmedAccount = false;
+                options.Password.RequiredLength = 4;
                 options.Password.RequiredUniqueChars = 1;
+                options.Password.RequireNonAlphanumeric = false;
+                options.Password.RequireDigit = false;
+                options.Password.RequireLowercase = false;
+                options.Password.RequireUppercase = false;
             })
             .AddEntityFrameworkStores<ApplicationDbContext>();
 
@@ -47,6 +48,8 @@ namespace Breakthroughs.Server
 
             services.AddAuthentication()
                 .AddIdentityServerJwt();
+
+            services.AddAuthorization();
 
             services.AddControllersWithViews();
 
@@ -73,6 +76,10 @@ namespace Breakthroughs.Server
             app.UseStaticFiles();
 
             app.UseRouting();
+
+            app.UseIdentityServer();
+            app.UseAuthentication();
+            app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {

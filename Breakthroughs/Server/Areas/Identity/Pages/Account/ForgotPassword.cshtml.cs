@@ -14,7 +14,7 @@ using Microsoft.AspNetCore.WebUtilities;
 
 namespace Breakthroughs.Server.Areas.Identity.Pages.Account
 {
-    [AllowAnonymous]
+    [Authorize]
     public class ForgotPasswordModel : PageModel
     {
         private readonly UserManager<ApplicationUser> _userManager;
