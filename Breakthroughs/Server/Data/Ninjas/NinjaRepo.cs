@@ -9,9 +9,9 @@ namespace Breakthroughs.Server.Data.Ninjas
 {
     public class NinjaRepo : INinjaRepo
     {
-        private readonly NinjaDbContext dbContext;
+        private readonly ApplicationDbContext dbContext;
 
-        public NinjaRepo(NinjaDbContext _dbContext)
+        public NinjaRepo(ApplicationDbContext _dbContext)
         {
             dbContext = _dbContext;
         }

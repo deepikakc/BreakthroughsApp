@@ -10,6 +10,9 @@ using Breakthroughs.Server.Data.Ninjas;
 using Microsoft.EntityFrameworkCore;
 using System;
 using AutoMapper;
+using Breakthroughs.Server.Data;
+using Breakthroughs.Server.Models;
+using Microsoft.AspNetCore.Authentication;
 
 namespace Breakthroughs.Server
 {
@@ -24,11 +27,26 @@ namespace Breakthroughs.Server
 
         public void ConfigureServices(IServiceCollection services)
         {
-            // ninjas
-            services.AddDbContextPool<NinjaDbContext>(opt =>
-                opt.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            services.AddDbContext<ApplicationDbContext>(options =>
+                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddScoped<INinjaRepo, NinjaRepo>();
+
+            services.AddDefaultIdentity<ApplicationUser>(options => {
+                options.SignIn.RequireConfirmedAccount = true;
+                options.Password.RequireDigit = false;
+                options.Password.RequireUppercase = false;
+                options.Password.RequireLowercase = false;
+                options.Password.RequireNonAlphanumeric = false;
+                options.Password.RequiredUniqueChars = 1;
+            })
+            .AddEntityFrameworkStores<ApplicationDbContext>();
+
+            services.AddIdentityServer()
+                .AddApiAuthorization<ApplicationUser, ApplicationDbContext>();
+
+            services.AddAuthentication()
+                .AddIdentityServerJwt();
 
             services.AddControllersWithViews();
 
